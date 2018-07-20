@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">childeducation</string>
+    <string name="choseLanguage">Please choose your language</string>
+
+    <string-array name="myAnimals">
+        <item>Cow</item>
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Donkey</item>
+        <item>Sheep</item>
+    </string-array>
+
+
+</resources>

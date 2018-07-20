@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">childeducation</string>
+    <string name="choseLanguage">Lütfen dili seçin</string>
+
+    <string-array name="myAnimals">
+        <item>İnek</item>
+        <item>Kedi</item>
+        <item>Köpek</item>
+        <item>Donkey</item>
+        <item>Sheep</item>
+    </string-array>
+
+</resources>
