@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">childeducation</string>
     <string name="choseLanguage">Lütfen dili seçin</string>
-
+    <string name="ttsFailed">TTS Başlatılamadı.</string>
     <string-array name="myAnimals">
         <item>İnek</item>
         <item>Kedi</item>

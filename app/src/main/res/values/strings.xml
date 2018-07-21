@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">childeducation</string>
     <string name="choseLanguage">Please choose your language</string>
+    <string name="ttsFailed">Initialization Failed TTS</string>
 
     <string-array name="myAnimals">
         <item>Cow</item>
@@ -10,5 +11,18 @@
         <item>Sheep</item>
     </string-array>
 
+
+    <string-array name="myNumber">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 
 </resources>
