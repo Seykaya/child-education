@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ali.kilic.childeducation.R;
@@ -14,12 +15,13 @@ import java.util.List;
 public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.MyViewHolder> {
 
     Context context;
-    List<String> numbers;
+    List<Integer> numbersIDList;
     INumbersAdapterClicks numbersAdapterClicks;
 
-    public NumbersAdapter(Context context, List<String> numbers) {
+
+    public NumbersAdapter(Context context, List<Integer> numbers) {
         this.context = context;
-        this.numbers = numbers;
+        this.numbersIDList = numbers;
     }
 
     @Override
@@ -30,13 +32,15 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
-        holder.number.setText(numbers.get(position).toString());
-        holder.number.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        holder.numberImage.setImageDrawable(context.getResources().getDrawable(numbersIDList.get(position)));
+        holder.numberImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (numbersAdapterClicks != null) {
-                    numbersAdapterClicks.animalItemCLick(holder.number.getText().toString());
+                    numbersAdapterClicks.numberlItemCLick(context.getResources().getResourceEntryName(
+                            numbersIDList.get(position)
+                    ));
                 }
             }
         });
@@ -44,15 +48,15 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return numbers.size();
+        return numbersIDList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView number;
+        ImageView numberImage;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            number = itemView.findViewById(R.id.number);
+            numberImage = itemView.findViewById(R.id.number);
 
         }
     }

@@ -7,8 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.ali.kilic.childeducation.Numbers.NumbersActivity;
+
 public class MainActivity extends AppCompatActivity {
     Button btnAnimals;
+    Button btnNumbers;
     RecyclerView animalsListView;
     AnimalsAdapter animalsAdapter;
     IAnimasAdapterClicks animasAdapterClicks = new IAnimasAdapterClicks() {
@@ -18,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
                     getApplicationContext());
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +34,18 @@ public class MainActivity extends AppCompatActivity {
         btnAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AnimalsActivity.class);
-                startActivity(intent);
+                Intent intentAnimals = new Intent(getApplicationContext(), AnimalsActivity.class);
+                startActivity(intentAnimals);
             }
         });
-
+        btnNumbers=findViewById(R.id.buttonNumbers);
+        btnNumbers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentNumbers = new Intent(getApplicationContext(), NumbersActivity.class);
+                startActivity(intentNumbers);
+            }
+        });
     }
 
 }
