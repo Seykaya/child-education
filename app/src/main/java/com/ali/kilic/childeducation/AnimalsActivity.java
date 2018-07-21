@@ -1,5 +1,6 @@
 package com.ali.kilic.childeducation;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -7,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -27,18 +27,20 @@ public class AnimalsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        ArrayList<String> animals = new ArrayList<>();
-        animals.add("cat");
-        animals.add("cow");
-        animals.add("dog");
-        animals.add("donkey");
-        animals.add("sheep");
-        animals.add("chick");
+        ArrayList<Integer> animals = new ArrayList<>();
+        animals.add(R.drawable.cat);
+        animals.add(R.drawable.dog);
+        animals.add(R.drawable.cow);
+        animals.add(R.drawable.chick);
+        animals.add(R.drawable.donkey);
+        animals.add(R.drawable.horse);
+        animals.add(R.drawable.sheep);
+        animals.add(R.drawable.cockpng);
         animalsListView = findViewById(R.id.animalsListView);
         animalsAdapter = new AnimalsAdapter(getApplicationContext(), animals);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        animalsListView.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+        animalsListView.setLayoutManager(gridLayoutManager);
+        animalsListView.setAdapter(animalsAdapter);
 
     }
 }

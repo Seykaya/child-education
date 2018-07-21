@@ -1,15 +1,19 @@
 package com.ali.kilic.childeducation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    Button btnAnimals;
     RecyclerView animalsListView;
     AnimalsAdapter animalsAdapter;
     IAnimasAdapterClicks animasAdapterClicks = new IAnimasAdapterClicks() {
@@ -26,19 +30,18 @@ public class MainActivity extends AppCompatActivity {
         MusicHelper.getInstance().play("file:///android_asset/relaxing.mp3", getApplicationContext());
         setContentView(R.layout.activity_main);
         init();
-
+    }
+    public void init()
+    {
+        btnAnimals=findViewById(R.id.buttonAnimals);
+        btnAnimals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),AnimalsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    private void init() {
-        List<String> animals =  Arrays.asList(getResources().getStringArray(R.array.myAnimals));
-        animalsListView = findViewById(R.id.animalsListView);
-        animalsAdapter = new AnimalsAdapter(getApplicationContext(), animals);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        animalsListView.setLayoutManager(linearLayoutManager);
-        animalsAdapter.animasAdapterClicks = animasAdapterClicks;
-        animalsListView.setAdapter(animalsAdapter);
-
-    }
 }

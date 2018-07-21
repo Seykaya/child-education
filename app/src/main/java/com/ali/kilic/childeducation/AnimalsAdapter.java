@@ -5,21 +5,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalsAdapter extends RecyclerView.Adapter<AnimalsAdapter.MyViewHolder> {
 
     Context context;
-    List<String> animals;
+    List<Integer> animalsIDList;
     IAnimasAdapterClicks animasAdapterClicks;
 
-    public AnimalsAdapter(Context context, List<String> animals) {
+    public AnimalsAdapter(Context context, List<Integer> animals) {
         this.context = context;
-        this.animals = animals;
+        this.animalsIDList = animals;
     }
 
     @Override
@@ -30,29 +28,32 @@ public class AnimalsAdapter extends RecyclerView.Adapter<AnimalsAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
-        holder.animalsName.setText(animals.get(position).toString());
-        holder.animalsName.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        holder.animalsImage.setImageDrawable(context.getResources().getDrawable(animalsIDList.get(position)));
+        holder.animalsImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (animasAdapterClicks!=null){
-                    animasAdapterClicks.animalItemCLick(holder.animalsName.getText().toString());
+                if (animasAdapterClicks != null) {
+                    animasAdapterClicks.animalItemCLick(context.getResources().getResourceEntryName(
+                            animalsIDList.get(position)
+                    ));
                 }
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
-        return animals.size();
+        return animalsIDList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView animalsName;
+        ImageView animalsImage;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            animalsName = itemView.findViewById(R.id.animalsName);
+            animalsImage = itemView.findViewById(R.id.imageAnimals);
 
         }
     }
