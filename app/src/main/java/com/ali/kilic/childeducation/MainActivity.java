@@ -8,10 +8,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ali.kilic.childeducation.Numbers.NumbersActivity;
+import com.ali.kilic.childeducation.Professions.ProfessionAdapter;
+import com.ali.kilic.childeducation.Professions.ProsfessionActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button btnAnimals;
     Button btnNumbers;
+    Button btnProfession;
     RecyclerView animalsListView;
     AnimalsAdapter animalsAdapter;
     IAnimasAdapterClicks animasAdapterClicks = new IAnimasAdapterClicks() {
@@ -44,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentNumbers = new Intent(getApplicationContext(), NumbersActivity.class);
                 startActivity(intentNumbers);
+            }
+        });
+        btnProfession=findViewById(R.id.buttonProfesions);
+        btnProfession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentProfession = new Intent(getApplicationContext(), ProsfessionActivity.class);
+                startActivity(intentProfession);
             }
         });
     }
