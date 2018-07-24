@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">childeducation</string>
+    <string name="app_name">Child Education</string>
     <string name="choseLanguage">Please choose your language</string>
     <string name="ttsFailed">Initialization Failed TTS</string>
 

@@ -1,10 +1,14 @@
-package com.ali.kilic.childeducation;
+package com.ali.kilic.childeducation.Animals;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.ali.kilic.childeducation.Player.MyPlayer;
+import com.ali.kilic.childeducation.R;
+import com.ali.kilic.childeducation.Utils.ItemOffsetDecoration;
 
 import java.util.ArrayList;
 
@@ -16,7 +20,7 @@ public class AnimalsActivity extends AppCompatActivity {
     IAnimasAdapterClicks animasAdapterClicks = new IAnimasAdapterClicks() {
         @Override
         public void animalItemCLick(String animalName) {
-            MusicHelper.getInstance().play("file:///android_asset/" + animalName + ".mp3",
+            MyPlayer.getInstance().play("file:///android_asset/" + animalName + ".mp3",
                     getApplicationContext());
         }
     };
@@ -44,7 +48,15 @@ public class AnimalsActivity extends AppCompatActivity {
         animalsAdapter.animasAdapterClicks = animasAdapterClicks;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         animalsListView.setLayoutManager(gridLayoutManager);
+        ItemOffsetDecoration decoration=new ItemOffsetDecoration(getApplicationContext(),R.dimen.item_offset);
+        animalsListView.addItemDecoration(decoration);
         animalsListView.setAdapter(animalsAdapter);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyPlayer.getInstance().stop(true);
     }
 }

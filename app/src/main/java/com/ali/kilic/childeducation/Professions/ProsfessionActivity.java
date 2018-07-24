@@ -1,15 +1,14 @@
 package com.ali.kilic.childeducation.Professions;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.ali.kilic.childeducation.AnimalsAdapter;
-import com.ali.kilic.childeducation.IAnimasAdapterClicks;
+import com.ali.kilic.childeducation.Player.MyPlayer;
 import com.ali.kilic.childeducation.R;
+import com.ali.kilic.childeducation.Utils.ItemOffsetDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,17 @@ public class ProsfessionActivity extends AppCompatActivity {
         professionIDList.add(R.drawable.police);
         professionIDList.add(R.drawable.nurse);
         professionAdapter=new ProfessionAdapter(professionIDList,getApplicationContext());
+        ItemOffsetDecoration decoration=new ItemOffsetDecoration(getApplicationContext(),R.dimen.item_offset);
+        professionListView.addItemDecoration(decoration);
         professionListView.setAdapter(professionAdapter);
 
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyPlayer.getInstance().stop(true);
+    }
+
 }
