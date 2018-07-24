@@ -61,9 +61,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         MyPlayer.getInstance().stop(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyPlayer.getInstance().start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MyPlayer.getInstance().pause();
+
     }
 }
