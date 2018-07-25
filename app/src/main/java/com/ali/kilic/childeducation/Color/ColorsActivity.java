@@ -13,6 +13,8 @@ import com.ali.kilic.childeducation.R;
 import java.util.HashMap;
 import java.util.Locale;
 
+import jp.wasabeef.recyclerview.animators.FadeInAnimator;
+
 public class ColorsActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
     RecyclerView colorListView;
     HashMap<String, Integer> colorIDList = new HashMap<>();
@@ -52,6 +54,11 @@ public class ColorsActivity extends AppCompatActivity implements TextToSpeech.On
         colorAdapter = new ColorAdapter(colorIDList, getApplicationContext());
         colorAdapter.colorAdapterClicks = colorAdapterClicks;
         colorListView.setAdapter(colorAdapter);
+        colorListView.setItemAnimator(new FadeInAnimator());
+        colorListView.getItemAnimator().setAddDuration(1000);
+        colorListView.getItemAnimator().setRemoveDuration(1000);
+        colorListView.getItemAnimator().setMoveDuration(1000);
+        colorListView.getItemAnimator().setChangeDuration(1000);
     }
 
 

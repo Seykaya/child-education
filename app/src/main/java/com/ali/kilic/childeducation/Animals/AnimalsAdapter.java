@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.ali.kilic.childeducation.R;
@@ -40,6 +41,7 @@ public class AnimalsAdapter extends RecyclerView.Adapter<AnimalsAdapter.MyViewHo
                             animalsIDList.get(position)
                     ));
                 }
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.clicked_anim));
             }
         });
 

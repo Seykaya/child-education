@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,7 +43,9 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.MyViewHo
                             numbersIDList.get(position)
                     ));
                 }
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.clicked_anim));
             }
+
         });
     }
 
