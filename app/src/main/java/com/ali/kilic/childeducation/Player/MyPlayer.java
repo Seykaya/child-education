@@ -1,4 +1,4 @@
-package com.ali.kilic.childeducation;
+package com.ali.kilic.childeducation.Player;
 
 import android.content.Context;
 import android.net.Uri;
@@ -23,14 +23,13 @@ import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-import com.ali.kilic.childeducation.Playback;
 
 import static com.google.android.exoplayer2.C.CONTENT_TYPE_MUSIC;
 import static com.google.android.exoplayer2.C.USAGE_MEDIA;
 
-public class MusicHelper implements Playback {
+public class MyPlayer implements IPlayBack {
 
-    private static final MusicHelper ourInstance = new MusicHelper();
+    private static final MyPlayer ourInstance = new MyPlayer();
     private final ExoPlayerEventListener mEventListener = new ExoPlayerEventListener();
     String songPath;
     public Context context = null;
@@ -38,7 +37,7 @@ public class MusicHelper implements Playback {
     private SimpleExoPlayer mExoPlayer;
     private Long songLastPosition = null;
 
-    public static MusicHelper getInstance() {
+    public static MyPlayer getInstance() {
         return ourInstance;
     }
 

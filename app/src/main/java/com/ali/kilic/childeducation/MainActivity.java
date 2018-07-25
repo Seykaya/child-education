@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.ali.kilic.childeducation.Animals.AnimalsActivity;
+import com.ali.kilic.childeducation.Animals.IAnimasAdapterClicks;
 import com.ali.kilic.childeducation.Numbers.NumbersActivity;
-import com.ali.kilic.childeducation.Professions.ProfessionAdapter;
+import com.ali.kilic.childeducation.Player.MyPlayer;
 import com.ali.kilic.childeducation.Professions.ProsfessionActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,23 +18,24 @@ public class MainActivity extends AppCompatActivity {
     Button btnNumbers;
     Button btnProfession;
     RecyclerView animalsListView;
-    AnimalsAdapter animalsAdapter;
     IAnimasAdapterClicks animasAdapterClicks = new IAnimasAdapterClicks() {
         @Override
         public void animalItemCLick(String animalName) {
-            MusicHelper.getInstance().play("file:///android_asset/" + animalName + ".mp3",
+            MyPlayer.getInstance().play("file:///android_asset/" + animalName + ".mp3",
                     getApplicationContext());
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MusicHelper.getInstance().play("file:///android_asset/relaxing.mp3", getApplicationContext());
+        MyPlayer.getInstance().play("file:///android_asset/relaxing.mp3", getApplicationContext());
         setContentView(R.layout.activity_main);
         init();
     }
 
     public void init() {
+
         btnAnimals = findViewById(R.id.buttonAnimals);
         btnAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentAnimals);
             }
         });
-        btnNumbers=findViewById(R.id.buttonNumbers);
+        btnNumbers = findViewById(R.id.buttonNumbers);
         btnNumbers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentNumbers);
             }
         });
-        btnProfession=findViewById(R.id.buttonProfesions);
+        btnProfession = findViewById(R.id.buttonProfesions);
         btnProfession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,4 +62,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyPlayer.getInstance().stop(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyPlayer.getInstance().start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MyPlayer.getInstance().pause();
+
+    }
 }

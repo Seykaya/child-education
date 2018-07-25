@@ -1,4 +1,4 @@
-package com.ali.kilic.childeducation;
+package com.ali.kilic.childeducation.Animals;
 
 public interface IAnimasAdapterClicks {
 

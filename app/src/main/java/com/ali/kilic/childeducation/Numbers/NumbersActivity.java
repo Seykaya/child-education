@@ -8,7 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.ali.kilic.childeducation.Player.MyPlayer;
 import com.ali.kilic.childeducation.R;
+import com.ali.kilic.childeducation.Utils.ItemOffsetDecoration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,6 +60,8 @@ public class NumbersActivity extends AppCompatActivity implements TextToSpeech.O
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
         numberListView.setLayoutManager(gridLayoutManager);
         numbersAdapter.numbersAdapterClicks = numbersAdapterClicks;
+        ItemOffsetDecoration decoration=new ItemOffsetDecoration(getApplicationContext(),R.dimen.item_offset);
+        numberListView.addItemDecoration(decoration);
         numberListView.setAdapter(numbersAdapter);
 
 
@@ -74,4 +78,11 @@ public class NumbersActivity extends AppCompatActivity implements TextToSpeech.O
                     Toast.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MyPlayer.getInstance().stop(true);
+    }
+
 }

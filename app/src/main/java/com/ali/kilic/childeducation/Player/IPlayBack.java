@@ -1,8 +1,8 @@
-package com.ali.kilic.childeducation;
+package com.ali.kilic.childeducation.Player;
 
 import android.content.Context;
 
-public interface Playback {
+public interface IPlayBack {
     /**
      * Start/setup the playback.
      * Resources/listeners would be allocated by implementations.
@@ -66,7 +66,7 @@ public interface Playback {
         void onCompletion();
 
         /**
-         * on Playback status changed
+         * on IPlayBack status changed
          * Implementations can use this callback to update
          * playback state on the media sessions.
          */

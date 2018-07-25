@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">childeducation</string>
+    <string name="app_name">Çocuk Eğitimi</string>
     <string name="choseLanguage">Lütfen dili seçin</string>
     <string name="ttsFailed">TTS Başlatılamadı.</string>
     <string-array name="myAnimals">
