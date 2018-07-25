@@ -1,4 +1,5 @@
 package com.ali.kilic.childeducation.Color;
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,18 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.ali.kilic.childeducation.Professions.ProfessionAdapter;
 import com.ali.kilic.childeducation.R;
 
-import java.util.List;
+import java.util.HashMap;
+
 public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.MyViewHolder> {
 
 
-    List<Integer> colorIDList;
+    HashMap<String, Integer> colorIDList;
     Context context;
     IColorAadapterClicks colorAdapterClicks;
 
-    public ColorAdapter(List<Integer> colorIDList, Context context) {
+    public ColorAdapter(HashMap<String, Integer> colorIDList, Context context) {
         this.colorIDList = colorIDList;
         this.context = context;
     }
@@ -32,15 +33,16 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.colorImage.setImageDrawable(
-                context.getResources().getDrawable(colorIDList.get(position))
-        );
+        final Object[] keys = colorIDList.keySet().toArray();
+
+        holder.colorImage.setBackgroundColor(
+                context.getResources().getColor(colorIDList.get(keys[position])));
+
         holder.colorImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(colorAdapterClicks!=null){
-
-                    colorAdapterClicks.colorItemClick(context.getResources().getResourceEntryName(colorIDList.get(position)));
+                if (colorAdapterClicks != null) {
+                    colorAdapterClicks.colorItemClick(keys[position].toString());
                 }
             }
         });

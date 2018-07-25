@@ -18,8 +18,8 @@
         </activity>
         <activity android:name=".Animals.AnimalsActivity" />
         <activity android:name=".Numbers.NumbersActivity" />
-        <activity android:name=".Professions.ProsfessionActivity"/>
-
+        <activity android:name=".Professions.ProsfessionActivity" />
+        <activity android:name=".Color.ColorsActivity" />
 
     </application>
 

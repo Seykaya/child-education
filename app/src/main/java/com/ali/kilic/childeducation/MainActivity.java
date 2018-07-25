@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.ali.kilic.childeducation.Animals.AnimalsActivity;
 import com.ali.kilic.childeducation.Animals.IAnimasAdapterClicks;
+import com.ali.kilic.childeducation.Color.ColorsActivity;
 import com.ali.kilic.childeducation.Numbers.NumbersActivity;
 import com.ali.kilic.childeducation.Player.MyPlayer;
 import com.ali.kilic.childeducation.Professions.ProsfessionActivity;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAnimals;
     Button btnNumbers;
     Button btnProfession;
+    Button btnColors;
     RecyclerView animalsListView;
     IAnimasAdapterClicks animasAdapterClicks = new IAnimasAdapterClicks() {
         @Override
@@ -60,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentProfession);
             }
         });
+
+        btnColors = findViewById(R.id.buttonColors);
+        btnColors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ColorsActivity.class));
+            }
+        });
     }
 
     @Override
@@ -71,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MyPlayer.getInstance().start();
     }
 
     @Override
